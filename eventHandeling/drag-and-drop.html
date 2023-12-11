@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .drag-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .drag-item {
+      background-color: #CC56FF;
+      padding: 10px;
+      margin-bottom: 5px;
+      cursor: move;
+    }
+  </style>
+</head>
+<body>
+  <ul id="dragList" class="drag-list">
+    <li class="drag-item" draggable="true">Mobile</li>
+    <li class="drag-item" draggable="true">Laptop</li>
+    <li class="drag-item" draggable="true">Desktop</li>
+    <li class="drag-item" draggable="true">Television</li>
+    <li class="drag-item" draggable="true">Radio</li>
+  </ul>
+
+  <script>
+    const dragList = document.getElementById('dragList');
+    let draggedItem = null;
+
+    dragList.addEventListener('dragstart', handleSragStart);
+    dragList.addEventListener('dragover', handleDragOver);
+    dragList.addEventListener('drop', handleDrop);
+
+    function handleDragStart(event) {
+        draggedItem  = event.target;
+        setTimeout(() => {
+          e.target.style.display = 'none'
+        }, 0);
+    }
+
+    function handleDragEnd() {
+      setTimeout(() => {
+        draggedItem.style.display = 'block';
+      }, 0);
+    }
+
+    function handleDragOver(e) {
+      e.preventDefault();
+      const afterElement = getDragAfter(reorderList, e.clientY);
+      const draggable = document.querySelector('.dragging');
+      if (afterElement == null) {
+        reorderlist.appendChild(draggable);
+      } else {
+        reorderList.insertBefore(draggable, afteElement);
+      }
+    }
+
+    function getDropAfterElement(container, y) {
+      const draggableElements = [...contianer.querySelector('li:not(.dragged)')];
+
+      return draggableElements.reduce((closet, child) => {
+        const box = child.getBoundingClientRest();
+        const offset = y - box.top - box.height / 2;
+
+        if ( offset < 0  && offset > closeest.offset) {
+          return { offset, element: child};
+        } else {
+          return closest;
+        }
+      }, { offset: Number.NEGATIVE_INFINITY }).element;
+    }
+
+
+
+  </script>
+</body>
+</html>
