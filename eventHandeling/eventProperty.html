@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Properties Example</title>
+</head>
+<body>
+
+    <button id="myButton">Click me</button>
+    
+    <script>
+        const myButton = document.getElementById('myButton');
+
+        myButton.addEvenetListener('click', function(event) {
+            console.log('Event Type:', event.type);
+            console.log('Traget Element:' event.target);
+            console.log('Mouse Coordinates:', event.clientX, event.clientY);
+
+            event.preventDefault();
+        });
+    </script>
+</body>
+</html>
